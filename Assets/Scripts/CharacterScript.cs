@@ -8,8 +8,11 @@ public class CharacterScript : MonoBehaviour
     public float crouchMultiplicator = 0.5f;
     public float jumpStrength;
     public float jumpSpeedMult;
+    public Vector3 lookDirection;
 
     Rigidbody playerBody;
+
+    Transform modelTransform;
 
     Vector3 speed;
     float speedMult;
@@ -26,7 +29,7 @@ public class CharacterScript : MonoBehaviour
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
-
+        modelTransform = transform.GetChild(0);
     }
 
     void Update()
@@ -48,12 +51,19 @@ public class CharacterScript : MonoBehaviour
             speed = new Vector3(x, 0, z);
         }
         speed.Normalize();
+
+        if (speed != Vector3.zero)
+        {
+            lookDirection = speed;
+            modelTransform.rotation = Quaternion.LookRotation(speed);
+        }
+
     }
 
     void FixedUpdate()
     {
         transform.Translate(speed * speedMult * crouchMult * moveSpeed * Time.deltaTime);
-
+        
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
             playerBody.AddForce(new Vector3(0, jumpStrength, 0));
@@ -69,7 +79,7 @@ public class CharacterScript : MonoBehaviour
             canjump = true;
             speedMult = 1;
         }
-        else if (collisionInfo.transform.tag == "wall")
+        else if (collisionInfo.transform.tag == "wall" || collisionInfo.transform.tag == "destructible")
         {
             speed = new Vector3(0, 0, 0);
         }
@@ -103,5 +113,10 @@ public class CharacterScript : MonoBehaviour
         active = a;
     }
 
+
+    public Vector3 GetDirection()
+    {
+        return lookDirection;
+    }
 }
 
