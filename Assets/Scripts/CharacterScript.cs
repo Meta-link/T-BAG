@@ -11,6 +11,7 @@ public class CharacterScript : MonoBehaviour
     public Vector3 lookDirection;
 
     Rigidbody playerBody;
+    Animator animator;
 
     Transform modelTransform;
 
@@ -29,6 +30,7 @@ public class CharacterScript : MonoBehaviour
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         modelTransform = transform.GetChild(0);
     }
 
@@ -56,14 +58,17 @@ public class CharacterScript : MonoBehaviour
         {
             lookDirection = speed;
             modelTransform.rotation = Quaternion.LookRotation(speed);
+            animator.SetBool("Running", true);
         }
+        else
+            animator.SetBool("Running", false);
 
     }
 
     void FixedUpdate()
     {
         transform.Translate(speed * speedMult * crouchMult * moveSpeed * Time.deltaTime);
-        
+
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
             playerBody.AddForce(new Vector3(0, jumpStrength, 0));

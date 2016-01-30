@@ -36,7 +36,6 @@ public class Shoot : MonoBehaviour {
                 bulletclone.GetComponent<BulletScript>().SetDirection(this.GetComponent<CharacterScript>().GetDirection());
                 shootCount++;
                 timer = 0;
-                print("fire");
             }
 
             if(shootCount >= 3)
