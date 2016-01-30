@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManagerScript : MonoBehaviour
 {
 
     public float time;
     public float authorTime;
 
     private bool isFinish = false;
-    private bool cleared = false;
+    private int ennemiesLeft = 0;
 
     private float timeLeft;
     private Text text;
@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         timeLeft = time;// * 1000;
         text = findText("Timer");
         text.text = timeLeft.ToString();
+
+        ennemiesLeft = GameObject.FindGameObjectsWithTag("ennemy").Length;
     }
 
     // Update is called once per frame
@@ -29,21 +31,20 @@ public class GameManager : MonoBehaviour
         if (!isFinish)
         {
             timeLeft -= Time.deltaTime;
-            //END OF TIME
-            if (timeLeft <= 0)
+
+            //Next niveau
+            if (ennemiesLeft <= 0 || timeLeft <= 0)
             {
-                timeLeft = 0;
                 isFinish = true;
                 findText("Restart").color = Color.black; //Methode pirate
+
+                if (timeLeft <= 0)
+                    timeLeft = 0;
+                if (ennemiesLeft <= 0)
+                    findText("Next").color = Color.black;
             }
+
             text.text = timeLeft.ToString();
-            //Next niveau
-            /*
-            if(fin)
-            {
-                findText("Next").color = Color.black;
-            }
-            */
         }
         else //ENDSTATE
         {
@@ -69,5 +70,10 @@ public class GameManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void removeEnnemy()
+    {
+        ennemiesLeft--;
     }
 }

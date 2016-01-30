@@ -88,6 +88,7 @@ public class Character : MonoBehaviour
             Debug.Log("TEABAGGED");
             other.transform.tag = "ennemyDown";
             //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
         }
 
     }
