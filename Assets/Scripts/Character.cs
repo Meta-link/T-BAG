@@ -5,33 +5,70 @@ public class Character : MonoBehaviour
 {
 
     public float moveSpeed;
+    public float jumpStrength;
+    public float jumpSpeedMult;
+
     Rigidbody playerBody;
 
-    // Use this for initialization
+    Vector3 speed;
+    float speedMult;
+
+    bool canjump = true;
+
+
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float z = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
 
-        if (z != 0)
+        if (canjump)
         {
-            transform.Translate(0, 0, z * moveSpeed * Time.deltaTime);
+            speed = new Vector3(x, 0, z);
         }
-        if (x != 0)
+        speed.Normalize();
+
+        transform.Translate(speed * speedMult * moveSpeed * Time.deltaTime);
+
+        if (Input.GetAxis("Jump") != 0 && canjump)
         {
-            transform.Translate(x * moveSpeed * Time.deltaTime, 0, 0);
+            playerBody.AddForce(new Vector3(0, jumpStrength, 0));
         }
 
-        if( Input.GetButton("Jump"))
+    }
+
+    void OnCollisonEnter(Collision collisionInfo)
+    {
+
+    }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        if (collisionInfo.transform.tag == "ground")
         {
-            // faire un beau jump ici
+            canjump = true;
+            speedMult = 1;
+        }
+        else if (collisionInfo.transform.tag == "wall")
+        {
+            speed = new Vector3(0, 0, 0);
+            print("wall2");
         }
     }
+
+    void OnCollisionExit(Collision collisionInfo)
+    {
+        if (collisionInfo.transform.tag == "ground")
+        {
+            canjump = false;
+            speedMult = jumpSpeedMult;
+        }
+
+    }
 }
+
