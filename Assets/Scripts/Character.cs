@@ -85,8 +85,9 @@ public class Character : MonoBehaviour
     {
         if(other.transform.tag == "ennemy" && crouch)
         {
-            Debug.Log("TEABAG");
-            other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            Debug.Log("TEABAGGED");
+            other.transform.tag = "ennemyDown";
+            //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
         }
 
     }
