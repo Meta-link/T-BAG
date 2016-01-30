@@ -13,6 +13,7 @@ public class CharacterScript : MonoBehaviour
 
 
     Rigidbody playerBody;
+    Animator animator;
 
     Transform modelTransform;
 
@@ -39,6 +40,7 @@ public class CharacterScript : MonoBehaviour
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         modelTransform = transform.GetChild(0);
     }
 
@@ -77,7 +79,10 @@ public class CharacterScript : MonoBehaviour
         {
             lookDirection = speed;
             modelTransform.rotation = Quaternion.LookRotation(speed);
+            animator.SetBool("Running", true);
         }
+        else
+            animator.SetBool("Running", false);
 
     }
 
