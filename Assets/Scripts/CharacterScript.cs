@@ -68,7 +68,12 @@ public class CharacterScript : MonoBehaviour
 
         if (firing)
         {
+            shootMult = shootMultiplicator;
             Shoot();
+        }
+        else
+        {
+            shootMult = 1;
         }
 
         if (crouch != 0 && canjump)
@@ -103,7 +108,7 @@ public class CharacterScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(speed * speedMult * crouchMult * moveSpeed * Time.deltaTime);
+        transform.Translate(speed * speedMult * crouchMult * shootMult *  moveSpeed * Time.deltaTime);
 
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
