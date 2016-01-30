@@ -21,6 +21,7 @@ public class CharacterScript : MonoBehaviour
     float z;
     float x;
 
+    bool active = true;
     bool canjump = true;
     bool crouch = false;
 
@@ -33,12 +34,14 @@ public class CharacterScript : MonoBehaviour
 
     void Update()
     {
-        
-        z = Input.GetAxisRaw("Vertical");
-        x = Input.GetAxisRaw("Horizontal");
-        crouch = Input.GetKey(KeyCode.C);
+        if(active)
+        { 
+            z = Input.GetAxisRaw("Vertical");
+            x = Input.GetAxisRaw("Horizontal");
+            crouch = Input.GetKey(KeyCode.C);
+        }
 
-        if(crouch && canjump)
+        if (crouch && canjump)
         {
             crouchMult = crouchMultiplicator;
         }
@@ -96,11 +99,20 @@ public class CharacterScript : MonoBehaviour
     {
         if(other.transform.tag == "ennemy" && crouch)
         {
-            Debug.Log("TEABAG");
-            other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            Debug.Log("TEABAGGED");
+            other.transform.tag = "ennemyDown";
+            //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            Camera.main.GetComponent<ShakeCamera>().DoShake(0.05f);
+            GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
         }
 
     }
+
+    public void setActive(bool a)
+    {
+        active = a;
+    }
+
 
     public Vector3 GetDirection()
     {
