@@ -9,7 +9,7 @@ public class Shoot : MonoBehaviour {
 
 
     bool firing = false;
-    float timer = 0;
+    float timer = 1; // set to 1 so that the first bullet goes off instantly
     int shootCount = 0;
 
 	// Use this for initialization
@@ -30,18 +30,20 @@ public class Shoot : MonoBehaviour {
             timer += Time.deltaTime;
             if(timer > timeBetweenBullets)
             {
-                GameObject bulletclone = Instantiate(Resources.Load("bullet")) as GameObject;
+                GameObject bulletclone = Instantiate(Resources.Load("Prefabs/bullet")) as GameObject;
                 bulletclone.transform.position = transform.position;
-                bulletclone.transform.rotation = transform.GetChild(0).rotation;
+                bulletclone.transform.rotation = Quaternion.LookRotation(this.GetComponent<Character>().GetDirection()); 
+                bulletclone.GetComponent<BulletScript>().SetDirection(this.GetComponent<Character>().GetDirection());
                 shootCount++;
                 timer = 0;
                 print("fire");
-                //GameObject bulletclone = Instantiate(bullet, transform.position, transform.rotation);
             }
 
             if(shootCount >= 3)
             {
                 firing = false;
+                shootCount = 0;
+                timer = 1;
             }
 
         }

@@ -5,8 +5,10 @@ public class Character : MonoBehaviour
 {
 
     public float moveSpeed;
+    public float crouchMultiplicator = 0.5f;
     public float jumpStrength;
     public float jumpSpeedMult;
+    public Vector3 lookDirection;
 
     Rigidbody playerBody;
 
@@ -14,11 +16,13 @@ public class Character : MonoBehaviour
 
     Vector3 speed;
     float speedMult;
+    float crouchMult = 1;
 
     float z;
     float x;
 
     bool canjump = true;
+    bool crouch = false;
 
 
     void Start()
@@ -31,6 +35,12 @@ public class Character : MonoBehaviour
     {
         z = Input.GetAxisRaw("Vertical");
         x = Input.GetAxisRaw("Horizontal");
+        crouch = Input.GetKey(KeyCode.C);
+
+        if(crouch && canjump)
+        {
+            crouchMult = crouchMultiplicator;
+        }
 
         if (canjump)
         {
@@ -39,21 +49,23 @@ public class Character : MonoBehaviour
         speed.Normalize();
 
         if (speed != Vector3.zero)
+        {
+            lookDirection = speed;
             modelTransform.rotation = Quaternion.LookRotation(speed);
+        }
 
     }
 
     void FixedUpdate()
     {
-        transform.Translate(speed * speedMult * moveSpeed * Time.deltaTime);
-
+        transform.Translate(speed * speedMult * crouchMult * moveSpeed * Time.deltaTime);
         
-
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
             playerBody.AddForce(new Vector3(0, jumpStrength, 0));
         }
 
+        crouchMult = 1;
     }
 
     void OnCollisionStay(Collision collisionInfo)
@@ -77,6 +89,21 @@ public class Character : MonoBehaviour
             speedMult = jumpSpeedMult;
         }
 
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.transform.tag == "ennemy" && crouch)
+        {
+            Debug.Log("TEABAG");
+            other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+        }
+
+    }
+
+    public Vector3 GetDirection()
+    {
+        return lookDirection;
     }
 }
 
