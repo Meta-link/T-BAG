@@ -92,6 +92,7 @@ public class CharacterScript : MonoBehaviour
             Debug.Log("TEABAGGED");
             other.transform.tag = "ennemyDown";
             //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            Camera.main.GetComponent<ShakeCamera>().DoShake(0.05f);
             GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
         }
 
