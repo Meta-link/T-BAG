@@ -39,7 +39,6 @@ public class Character : MonoBehaviour
 
     void FixedUpdate()
     {
-        
         transform.Translate(speed * speedMult * moveSpeed * Time.deltaTime);
 
         if (Input.GetAxis("Jump") != 0 && canjump)
