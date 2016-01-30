@@ -18,7 +18,7 @@ public class CharacterScript : MonoBehaviour
     Transform modelTransform;
 
     Vector3 speed;
-    Vector3 lookDirection;
+    public Vector3 lookDirection; // public so that we can set the shooting direction in the first level
 
     float speedMult;
     float crouchMult = 1;
@@ -26,6 +26,8 @@ public class CharacterScript : MonoBehaviour
 
     float z;
     float x;
+
+    public bool firstLevel = false;
 
     bool active = true;
     bool canjump = true;
@@ -45,16 +47,22 @@ public class CharacterScript : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         modelTransform = transform.GetChild(0);
         shot = GetComponent<AudioSource>();
+
+        modelTransform.rotation = Quaternion.LookRotation(lookDirection);
     }
 
     void Update()
     {
+
         animator.SetBool("Tbagging", false);
         if (active)
         {
-            z = Input.GetAxisRaw("Vertical");
-            x = Input.GetAxisRaw("Horizontal");
-            crouch = Input.GetAxisRaw("Fire2");
+            if (!firstLevel)
+            {
+                z = Input.GetAxisRaw("Vertical");
+                x = Input.GetAxisRaw("Horizontal");
+                crouch = Input.GetAxisRaw("Fire2");
+            }
 
             if (Input.GetAxis("Fire1") != 0 && !firing)
             {
@@ -89,7 +97,7 @@ public class CharacterScript : MonoBehaviour
         if (speed != Vector3.zero)
         {
             lookDirection = speed;
-            modelTransform.rotation = Quaternion.LookRotation(speed);
+            modelTransform.rotation = Quaternion.LookRotation(lookDirection);
             animator.SetBool("Running", true);
         }
         else
