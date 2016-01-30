@@ -5,11 +5,11 @@ public class CharacterScript : MonoBehaviour
 {
 
     public float moveSpeed;
-    public float crouchMultiplicator = 0.5f;
     public float shootMultiplicator = 0.7f;
     public float jumpStrength;
     public float jumpSpeedMult = 1.3f;
     public float timeBetweenBullets = 0.2f;
+    public float crouchTime = 5f;
 
 
     Rigidbody playerBody;
@@ -30,6 +30,7 @@ public class CharacterScript : MonoBehaviour
     bool active = true;
     bool canjump = true;
     float crouch = 0;
+    float crouchLeft;
     bool firing = false;
 
     float timer = 1; // set to 1 so that the first bullet goes off instantly
@@ -46,6 +47,7 @@ public class CharacterScript : MonoBehaviour
 
     void Update()
     {
+        animator.SetBool("Tbagging", false);
         if (active)
         {
             z = Input.GetAxisRaw("Vertical");
@@ -61,13 +63,20 @@ public class CharacterScript : MonoBehaviour
         if (firing)
         {
             Shoot();
-
         }
 
         if (crouch != 0 && canjump)
         {
-            crouchMult = crouchMultiplicator;
+            crouchMult = 0;
+            animator.SetBool("Tbagging", true);
+            crouchLeft = crouchTime;
         }
+        crouchLeft -= Time.deltaTime;
+        if (crouchMult == 0 && crouchLeft <= 0)
+        {
+            crouchMult = 1;
+        }
+
 
         if (canjump)
         {
@@ -94,8 +103,6 @@ public class CharacterScript : MonoBehaviour
         {
             playerBody.AddForce(new Vector3(0, jumpStrength, 0));
         }
-
-        crouchMult = 1;
     }
 
     void OnCollisionStay(Collision collisionInfo)
@@ -136,6 +143,7 @@ public class CharacterScript : MonoBehaviour
 
     void Shoot()
     {
+        animator.SetBool("Shooting", true);
         timer += Time.deltaTime;
         if (timer > timeBetweenBullets)
         {
@@ -145,7 +153,6 @@ public class CharacterScript : MonoBehaviour
             bulletclone.GetComponent<BulletScript>().SetDirection(lookDirection);
             shootCount++;
             timer = 0;
-            print("fire");
         }
 
         if (shootCount >= 3)
@@ -153,6 +160,7 @@ public class CharacterScript : MonoBehaviour
             firing = false;
             shootCount = 0;
             timer = 1;
+            animator.SetBool("Shooting", false);
         }
     }
 
