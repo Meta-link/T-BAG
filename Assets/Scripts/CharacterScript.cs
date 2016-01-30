@@ -38,6 +38,8 @@ public class CharacterScript : MonoBehaviour
     float timer = 1; // set to 1 so that the first bullet goes off instantly
     int shootCount = 0;
 
+    AudioSource audio;
+
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
@@ -45,6 +47,7 @@ public class CharacterScript : MonoBehaviour
         modelTransform = transform.GetChild(0);
 
         modelTransform.rotation = Quaternion.LookRotation(lookDirection);
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -100,9 +103,14 @@ public class CharacterScript : MonoBehaviour
             lookDirection = speed;
             modelTransform.rotation = Quaternion.LookRotation(lookDirection);
             animator.SetBool("Running", true);
+            if (!audio.isPlaying)
+                audio.Play();
         }
         else
+        { 
             animator.SetBool("Running", false);
+            audio.Stop();
+        }
 
     }
 
