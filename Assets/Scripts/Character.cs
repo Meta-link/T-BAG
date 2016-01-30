@@ -42,11 +42,6 @@ public class Character : MonoBehaviour
 
     }
 
-    void OnCollisonEnter(Collision collisionInfo)
-    {
-
-    }
-
     void OnCollisionStay(Collision collisionInfo)
     {
         if (collisionInfo.transform.tag == "ground")
