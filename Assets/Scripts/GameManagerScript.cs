@@ -41,10 +41,23 @@ public class GameManagerScript : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterScript>().setActive(false);
                 findText("Restart").color = Color.black; //Methode pirate
 
-                if (timeLeft <= 0)
-                    timeLeft = 0;
+
                 if (ennemiesLeft <= 0)
                     findText("Next").color = Color.black;
+
+                if( timeLeft > authorTime)
+                {
+                    // Affichage Win MVP
+                }
+                else if( timeLeft > 0)
+                {
+                    // Affichage Win
+                }
+                else
+                {
+                    // affichage Fail
+                    timeLeft = 0;
+                }
             }
 
             text.text = timeLeft.ToString();
