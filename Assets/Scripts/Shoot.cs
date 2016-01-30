@@ -31,9 +31,9 @@ public class Shoot : MonoBehaviour {
             if(timer > timeBetweenBullets)
             {
                 GameObject bulletclone = Instantiate(Resources.Load("Prefabs/bullet")) as GameObject;
-                bulletclone.transform.position = transform.position;
-                bulletclone.transform.rotation = Quaternion.LookRotation(this.GetComponent<Character>().GetDirection()); 
-                bulletclone.GetComponent<BulletScript>().SetDirection(this.GetComponent<Character>().GetDirection());
+                bulletclone.transform.position = transform.position + this.GetComponent<CharacterScript>().GetDirection() ;
+                bulletclone.transform.rotation = Quaternion.LookRotation(this.GetComponent<CharacterScript>().GetDirection()); 
+                bulletclone.GetComponent<BulletScript>().SetDirection(this.GetComponent<CharacterScript>().GetDirection());
                 shootCount++;
                 timer = 0;
                 print("fire");

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Character : MonoBehaviour
+public class CharacterScript : MonoBehaviour
 {
 
     public float moveSpeed;
@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
+        
         z = Input.GetAxisRaw("Vertical");
         x = Input.GetAxisRaw("Horizontal");
         crouch = Input.GetKey(KeyCode.C);
@@ -75,7 +76,7 @@ public class Character : MonoBehaviour
             canjump = true;
             speedMult = 1;
         }
-        else if (collisionInfo.transform.tag == "wall")
+        else if (collisionInfo.transform.tag == "wall" || collisionInfo.transform.tag == "destructible")
         {
             speed = new Vector3(0, 0, 0);
         }
