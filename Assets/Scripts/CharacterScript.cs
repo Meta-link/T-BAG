@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Character : MonoBehaviour
+public class CharacterScript : MonoBehaviour
 {
 
     public float moveSpeed;
@@ -18,6 +18,7 @@ public class Character : MonoBehaviour
     float z;
     float x;
 
+    bool active = true;
     bool canjump = true;
     bool crouch = false;
 
@@ -30,11 +31,14 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        z = Input.GetAxisRaw("Vertical");
-        x = Input.GetAxisRaw("Horizontal");
-        crouch = Input.GetKey(KeyCode.C);
+        if(active)
+        { 
+            z = Input.GetAxisRaw("Vertical");
+            x = Input.GetAxisRaw("Horizontal");
+            crouch = Input.GetKey(KeyCode.C);
+        }
 
-        if(crouch && canjump)
+        if (crouch && canjump)
         {
             crouchMult = crouchMultiplicator;
         }
@@ -92,5 +96,11 @@ public class Character : MonoBehaviour
         }
 
     }
+
+    public void setActive(bool a)
+    {
+        active = a;
+    }
+
 }
 
