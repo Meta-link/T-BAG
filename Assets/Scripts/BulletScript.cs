@@ -33,7 +33,10 @@ public class BulletScript : MonoBehaviour
             Destroy(collisionInfo.gameObject);
 
         }
-        Destroy(this.gameObject);
+        if (collisionInfo.transform.tag != "Player")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

@@ -36,7 +36,7 @@ public class GameManagerScript : MonoBehaviour
             if (ennemiesLeft <= 0 || timeLeft <= 0)
             {
                 isFinish = true;
-                GameObject.Find("Char").GetComponent<CharacterScript>().setActive(false);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterScript>().setActive(false);
                 findText("Restart").color = Color.black; //Methode pirate
 
                 if (timeLeft <= 0)
