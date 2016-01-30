@@ -39,11 +39,6 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if(collisionInfo.transform.tag == "destructible")
-        {
-            Destroy(collisionInfo.gameObject);
-
-        }
         if (collisionInfo.transform.tag != "Player")
         {
             Destroy(this.gameObject);
