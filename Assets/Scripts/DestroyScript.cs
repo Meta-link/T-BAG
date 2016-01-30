@@ -5,6 +5,7 @@ public class DestroyScript : MonoBehaviour
 {
 
     AudioSource source;
+    GameObject Corpse;
 
     // Use this for initialization
     void Start()
@@ -28,7 +29,21 @@ public class DestroyScript : MonoBehaviour
             Destroy(collisionInfo.gameObject);
             source.Play();
             GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<BoxCollider>().enabled = false;
+            gameObject.layer = LayerMask.NameToLayer("Destructed");
+            if( Corpse != null)
+            {
+                print("tralalal");
+                Corpse.GetComponent<Rigidbody>().AddForce(0, 1, 0);
+            }
+            //GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        if (collisionInfo.transform.tag == "ennemyForCrate")
+        {
+            Corpse = collisionInfo.gameObject;
         }
     }
 }

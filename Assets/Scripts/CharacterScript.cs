@@ -168,7 +168,7 @@ public class CharacterScript : MonoBehaviour
         if (timer > timeBetweenBullets)
         {
             GameObject bulletclone = Instantiate(Resources.Load("Prefabs/bullet")) as GameObject;
-            bulletclone.transform.position = transform.position + lookDirection;
+            bulletclone.transform.position = transform.position + transform.up * 0.35f + lookDirection * 1.0f;
             bulletclone.transform.rotation = Quaternion.LookRotation(lookDirection);
             bulletclone.GetComponent<BulletScript>().SetDirection(lookDirection);
             shootCount++;
