@@ -13,6 +13,9 @@ public class Character : MonoBehaviour
     Vector3 speed;
     float speedMult;
 
+    float z;
+    float x;
+
     bool canjump = true;
 
 
@@ -22,17 +25,21 @@ public class Character : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        float z = Input.GetAxis("Vertical");
-        float x = Input.GetAxis("Horizontal");
+        z = Input.GetAxisRaw("Vertical");
+        x = Input.GetAxisRaw("Horizontal");
 
         if (canjump)
         {
             speed = new Vector3(x, 0, z);
         }
         speed.Normalize();
+    }
 
+    void FixedUpdate()
+    {
+        
         transform.Translate(speed * speedMult * moveSpeed * Time.deltaTime);
 
         if (Input.GetAxis("Jump") != 0 && canjump)
