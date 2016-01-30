@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour
     public float authorTime;
 
     private bool isFinish = false;
+    private bool started = false;
     private int ennemiesLeft = 0;
 
     private float timeLeft;
@@ -30,7 +31,8 @@ public class GameManagerScript : MonoBehaviour
     {
         if (!isFinish)
         {
-            timeLeft -= Time.deltaTime;
+            if(started)
+                timeLeft -= Time.deltaTime;
 
             //Next niveau
             if (ennemiesLeft <= 0 || timeLeft <= 0)
@@ -75,6 +77,8 @@ public class GameManagerScript : MonoBehaviour
 
     public void removeEnnemy()
     {
+        if (!started)
+            started = true;
         ennemiesLeft--;
     }
 }
