@@ -7,11 +7,22 @@ public class BulletScript : MonoBehaviour
     public float bulletSpeed;
     public Vector3 direction;
 
+    float lifetime;
+
     Rigidbody rb;
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        lifetime += Time.deltaTime;
+        if( lifetime >= 15)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

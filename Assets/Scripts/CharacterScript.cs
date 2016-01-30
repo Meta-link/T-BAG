@@ -6,24 +6,34 @@ public class CharacterScript : MonoBehaviour
 
     public float moveSpeed;
     public float crouchMultiplicator = 0.5f;
+    public float shootMultiplicator = 0.7f;
     public float jumpStrength;
-    public float jumpSpeedMult;
-    public Vector3 lookDirection;
+    public float jumpSpeedMult = 1.3f;
+    public float timeBetweenBullets = 0.2f;
+
 
     Rigidbody playerBody;
 
     Transform modelTransform;
 
     Vector3 speed;
+    Vector3 lookDirection;
+
     float speedMult;
     float crouchMult = 1;
+    float shootMult = 0.7f;
 
     float z;
     float x;
 
     bool active = true;
     bool canjump = true;
-    bool crouch = false;
+    float crouch = 0;
+    bool firing = false;
+
+    float timer = 1; // set to 1 so that the first bullet goes off instantly
+    int shootCount = 0;
+
 
 
     void Start()
@@ -34,14 +44,25 @@ public class CharacterScript : MonoBehaviour
 
     void Update()
     {
-        if(active)
-        { 
+        if (active)
+        {
             z = Input.GetAxisRaw("Vertical");
             x = Input.GetAxisRaw("Horizontal");
-            crouch = Input.GetKey(KeyCode.C);
+            crouch = Input.GetAxisRaw("Fire2");
+
+            if (Input.GetAxis("Fire1") != 0 && !firing)
+            {
+                firing = true;
+            }
         }
 
-        if (crouch && canjump)
+        if (firing)
+        {
+            Shoot();
+
+        }
+
+        if (crouch != 0 && canjump)
         {
             crouchMult = crouchMultiplicator;
         }
@@ -63,7 +84,7 @@ public class CharacterScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(speed * speedMult * crouchMult * moveSpeed * Time.deltaTime);
-        
+
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
             playerBody.AddForce(new Vector3(0, jumpStrength, 0));
@@ -97,7 +118,7 @@ public class CharacterScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if(other.transform.tag == "ennemy" && crouch)
+        if (other.transform.tag == "ennemy" && crouch != 0)
         {
             Debug.Log("TEABAGGED");
             other.transform.tag = "ennemyDown";
@@ -106,6 +127,28 @@ public class CharacterScript : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
         }
 
+    }
+
+    void Shoot()
+    {
+        timer += Time.deltaTime;
+        if (timer > timeBetweenBullets)
+        {
+            GameObject bulletclone = Instantiate(Resources.Load("Prefabs/bullet")) as GameObject;
+            bulletclone.transform.position = transform.position + lookDirection;
+            bulletclone.transform.rotation = Quaternion.LookRotation(lookDirection);
+            bulletclone.GetComponent<BulletScript>().SetDirection(lookDirection);
+            shootCount++;
+            timer = 0;
+            print("fire");
+        }
+
+        if (shootCount >= 3)
+        {
+            firing = false;
+            shootCount = 0;
+            timer = 1;
+        }
     }
 
     public void setActive(bool a)
