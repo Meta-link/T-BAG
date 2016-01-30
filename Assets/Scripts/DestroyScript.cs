@@ -27,7 +27,7 @@ public class DestroyScript : MonoBehaviour
         {
             Destroy(collisionInfo.gameObject);
             source.Play();
-            GetComponent<MeshRenderer>();
+            GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
         }
     }

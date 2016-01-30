@@ -39,9 +39,11 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        GetComponent<AudioSource>().Play();
         if (collisionInfo.transform.tag != "Player")
         {
-            Destroy(this.gameObject);
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
         }
     }
 
