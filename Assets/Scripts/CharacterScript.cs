@@ -38,8 +38,6 @@ public class CharacterScript : MonoBehaviour
     float timer = 1; // set to 1 so that the first bullet goes off instantly
     int shootCount = 0;
 
-
-
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
@@ -158,6 +156,7 @@ public class CharacterScript : MonoBehaviour
     {
         animator.SetBool("Shooting", true);
         timer += Time.deltaTime;
+
         if (timer > timeBetweenBullets)
         {
             GameObject bulletclone = Instantiate(Resources.Load("Prefabs/bullet")) as GameObject;
