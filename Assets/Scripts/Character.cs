@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
 
     Rigidbody playerBody;
 
+    Transform modelTransform;
+
     Vector3 speed;
     float speedMult;
 
@@ -22,7 +24,7 @@ public class Character : MonoBehaviour
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
-
+        modelTransform = transform.GetChild(0);
     }
 
     void Update()
@@ -35,11 +37,17 @@ public class Character : MonoBehaviour
             speed = new Vector3(x, 0, z);
         }
         speed.Normalize();
+
+        if (speed != Vector3.zero)
+            modelTransform.rotation = Quaternion.LookRotation(speed);
+
     }
 
     void FixedUpdate()
     {
         transform.Translate(speed * speedMult * moveSpeed * Time.deltaTime);
+
+        
 
         if (Input.GetAxis("Jump") != 0 && canjump)
         {
@@ -58,7 +66,6 @@ public class Character : MonoBehaviour
         else if (collisionInfo.transform.tag == "wall")
         {
             speed = new Vector3(0, 0, 0);
-            print("wall2");
         }
     }
 
