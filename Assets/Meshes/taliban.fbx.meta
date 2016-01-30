@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8ac97e5217310da4298d3332543b55aa
-timeCreated: 1454159108
+guid: 1c8bb9e39fb05574ca6e96b2bda661a5
+timeCreated: 1454165139
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -21,13 +21,9 @@ ModelImporter:
     100026: joint7
     100028: joint8
     100030: joint9
-    100032: pCube10
-    100034: pCube3
-    100036: pCube5
-    100038: pCube7
-    100040: pCube9
-    100042: //RootNode
-    100044: polySurface1
+    100032: pCube3
+    100034: polySurface1
+    100036: //RootNode
     400000: joint10
     400002: joint11
     400004: joint12
@@ -44,39 +40,19 @@ ModelImporter:
     400026: joint7
     400028: joint8
     400030: joint9
-    400032: pCube10
-    400034: pCube3
-    400036: pCube5
-    400038: pCube7
-    400040: pCube9
-    400042: //RootNode
-    400044: polySurface1
-    2300000: pCube10
-    2300002: pCube3
-    2300004: pCube5
-    2300006: pCube7
-    2300008: pCube9
-    3300000: pCube10
-    3300002: pCube3
-    3300004: pCube5
-    3300006: pCube7
-    3300008: pCube9
+    400032: pCube3
+    400034: polySurface1
+    400036: //RootNode
+    2300000: pCube3
+    3300000: pCube3
     4300000: polySurface1
     4300002: pCube3
-    4300004: pCube10
-    4300006: pCube7
-    4300008: pCube5
-    4300010: pCube9
-    7400000: Tout
-    7400002: iddle
-    7400004: Run
-    7400006: RunShoot
-    7400008: Shoot
-    7400010: Teabag
-    7400012: Jump
-    7400014: teabag2
+    7400000: Take 001
+    7400002: mort
+    7400004: cadavre 1
+    7400006: cadavre 2
+    7400008: cadavre 3
     9500000: //RootNode
-    11100000: polySurface1
     13700000: polySurface1
   materials:
     importMaterials: 1
@@ -92,7 +68,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -100,10 +76,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Tout
+      name: Take 001
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 158
+      firstFrame: 165
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -134,8 +110,6 @@ ModelImporter:
         weight: 1
       - path: joint16/joint2/joint3/joint4
         weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
       - path: joint16/joint5
         weight: 1
       - path: joint16/joint5/joint6
@@ -161,12 +135,6 @@ ModelImporter:
       - path: joint16/joint17/joint8/joint13/joint14
         weight: 1
       - path: joint16/joint17/joint8/joint13/joint14/joint15
-        weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
         weight: 1
       - path: polySurface1
         weight: 1
@@ -174,306 +142,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: iddle
+      name: mort
       takeName: Take 001
-      firstFrame: 28
-      lastFrame: 78
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint16
-        weight: 1
-      - path: joint16/joint2
-        weight: 1
-      - path: joint16/joint2/joint3
-        weight: 1
-      - path: joint16/joint2/joint3/joint4
-        weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
-      - path: joint16/joint5
-        weight: 1
-      - path: joint16/joint5/joint6
-        weight: 1
-      - path: joint16/joint5/joint6/joint7
-        weight: 1
-      - path: joint16/joint17
-        weight: 1
-      - path: joint16/joint17/joint8
-        weight: 1
-      - path: joint16/joint17/joint8/joint9
-        weight: 1
-      - path: joint16/joint17/joint8/joint10
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12/pCube3
-        weight: 1
-      - path: joint16/joint17/joint8/joint13
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14/joint15
-        weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Run
-      takeName: Take 001
-      firstFrame: 110
-      lastFrame: 125
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint16
-        weight: 1
-      - path: joint16/joint2
-        weight: 1
-      - path: joint16/joint2/joint3
-        weight: 1
-      - path: joint16/joint2/joint3/joint4
-        weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
-      - path: joint16/joint5
-        weight: 1
-      - path: joint16/joint5/joint6
-        weight: 1
-      - path: joint16/joint5/joint6/joint7
-        weight: 1
-      - path: joint16/joint17
-        weight: 1
-      - path: joint16/joint17/joint8
-        weight: 1
-      - path: joint16/joint17/joint8/joint9
-        weight: 1
-      - path: joint16/joint17/joint8/joint10
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12/pCube3
-        weight: 1
-      - path: joint16/joint17/joint8/joint13
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14/joint15
-        weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: RunShoot
-      takeName: Take 001
-      firstFrame: 130
-      lastFrame: 145
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint16
-        weight: 1
-      - path: joint16/joint2
-        weight: 1
-      - path: joint16/joint2/joint3
-        weight: 1
-      - path: joint16/joint2/joint3/joint4
-        weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
-      - path: joint16/joint5
-        weight: 1
-      - path: joint16/joint5/joint6
-        weight: 1
-      - path: joint16/joint5/joint6/joint7
-        weight: 1
-      - path: joint16/joint17
-        weight: 1
-      - path: joint16/joint17/joint8
-        weight: 1
-      - path: joint16/joint17/joint8/joint9
-        weight: 1
-      - path: joint16/joint17/joint8/joint10
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12/pCube3
-        weight: 1
-      - path: joint16/joint17/joint8/joint13
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14/joint15
-        weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Shoot
-      takeName: Take 001
-      firstFrame: 149
-      lastFrame: 150
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint16
-        weight: 1
-      - path: joint16/joint2
-        weight: 1
-      - path: joint16/joint2/joint3
-        weight: 1
-      - path: joint16/joint2/joint3/joint4
-        weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
-      - path: joint16/joint5
-        weight: 1
-      - path: joint16/joint5/joint6
-        weight: 1
-      - path: joint16/joint5/joint6/joint7
-        weight: 1
-      - path: joint16/joint17
-        weight: 1
-      - path: joint16/joint17/joint8
-        weight: 1
-      - path: joint16/joint17/joint8/joint9
-        weight: 1
-      - path: joint16/joint17/joint8/joint10
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12
-        weight: 1
-      - path: joint16/joint17/joint8/joint10/joint11/joint12/pCube3
-        weight: 1
-      - path: joint16/joint17/joint8/joint13
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14
-        weight: 1
-      - path: joint16/joint17/joint8/joint13/joint14/joint15
-        weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Teabag
-      takeName: Take 001
-      firstFrame: 90
-      lastFrame: 94
+      firstFrame: 165
+      lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -504,8 +176,6 @@ ModelImporter:
         weight: 1
       - path: joint16/joint2/joint3/joint4
         weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
       - path: joint16/joint5
         weight: 1
       - path: joint16/joint5/joint6
@@ -532,22 +202,16 @@ ModelImporter:
         weight: 1
       - path: joint16/joint17/joint8/joint13/joint14/joint15
         weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
       - path: polySurface1
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Jump
+      name: cadavre 1
       takeName: Take 001
-      firstFrame: 104
-      lastFrame: 104
+      firstFrame: 184
+      lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -578,8 +242,6 @@ ModelImporter:
         weight: 1
       - path: joint16/joint2/joint3/joint4
         weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
       - path: joint16/joint5
         weight: 1
       - path: joint16/joint5/joint6
@@ -606,22 +268,16 @@ ModelImporter:
         weight: 1
       - path: joint16/joint17/joint8/joint13/joint14/joint15
         weight: 1
-      - path: joint16/joint17/joint8/pCube10
-        weight: 1
-      - path: joint16/joint17/pCube5
-        weight: 1
-      - path: joint16/joint17/pCube7
-        weight: 1
       - path: polySurface1
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: teabag2
+      name: cadavre 2
       takeName: Take 001
-      firstFrame: 90
-      lastFrame: 94
+      firstFrame: 189
+      lastFrame: 190
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -652,8 +308,6 @@ ModelImporter:
         weight: 1
       - path: joint16/joint2/joint3/joint4
         weight: 1
-      - path: joint16/joint2/pCube9
-        weight: 1
       - path: joint16/joint5
         weight: 1
       - path: joint16/joint5/joint6
@@ -680,11 +334,71 @@ ModelImporter:
         weight: 1
       - path: joint16/joint17/joint8/joint13/joint14/joint15
         weight: 1
-      - path: joint16/joint17/joint8/pCube10
+      - path: polySurface1
         weight: 1
-      - path: joint16/joint17/pCube5
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: cadavre 3
+      takeName: Take 001
+      firstFrame: 194
+      lastFrame: 195
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
         weight: 1
-      - path: joint16/joint17/pCube7
+      - path: joint16
+        weight: 1
+      - path: joint16/joint2
+        weight: 1
+      - path: joint16/joint2/joint3
+        weight: 1
+      - path: joint16/joint2/joint3/joint4
+        weight: 1
+      - path: joint16/joint5
+        weight: 1
+      - path: joint16/joint5/joint6
+        weight: 1
+      - path: joint16/joint5/joint6/joint7
+        weight: 1
+      - path: joint16/joint17
+        weight: 1
+      - path: joint16/joint17/joint8
+        weight: 1
+      - path: joint16/joint17/joint8/joint9
+        weight: 1
+      - path: joint16/joint17/joint8/joint10
+        weight: 1
+      - path: joint16/joint17/joint8/joint10/joint11
+        weight: 1
+      - path: joint16/joint17/joint8/joint10/joint11/joint12
+        weight: 1
+      - path: joint16/joint17/joint8/joint10/joint11/joint12/pCube3
+        weight: 1
+      - path: joint16/joint17/joint8/joint13
+        weight: 1
+      - path: joint16/joint17/joint8/joint13/joint14
+        weight: 1
+      - path: joint16/joint17/joint8/joint13/joint14/joint15
         weight: 1
       - path: polySurface1
         weight: 1
