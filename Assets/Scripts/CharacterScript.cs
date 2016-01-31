@@ -47,7 +47,7 @@ public class CharacterScript : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        modelTransform = transform.GetChild(0);
+        modelTransform = transform.FindChild("perso");
 
         modelTransform.rotation = Quaternion.LookRotation(lookDirection);
         audio = GetComponent<AudioSource>();
@@ -98,10 +98,10 @@ public class CharacterScript : MonoBehaviour
 
         if (canjump)
         {
-            //if (active)
+            if (active)
                 speed = new Vector3(x, 0, z);
-            //else
-            //    speed = Vector3.zero;
+            else
+                speed = Vector3.zero;
         }
         speed.Normalize();
 
