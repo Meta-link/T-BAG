@@ -11,6 +11,9 @@ public class CharacterScript : MonoBehaviour
     public float timeBetweenBullets = 0.2f;
     public float crouchTime = 5f;
 
+    public ParticleSystem shoot;
+    public ParticleSystem teabag1, teabag2;
+
 
     Rigidbody playerBody;
     Animator animator;
@@ -63,10 +66,10 @@ public class CharacterScript : MonoBehaviour
                 crouch = Input.GetAxisRaw("Fire2");
             }
 
-            if (Input.GetAxis("Fire1") != 0 && !firing)
+            if (Input.GetAxisRaw("Fire1") != 0 && !firing)
             {
                 firing = true;
-                GetComponentInChildren<ParticleSystem>().Play();
+                shoot.Play();
             }
         }
 
@@ -95,7 +98,10 @@ public class CharacterScript : MonoBehaviour
 
         if (canjump)
         {
-            speed = new Vector3(x, 0, z);
+            if (active)
+                speed = new Vector3(x, 0, z);
+            else
+                speed = Vector3.zero;
         }
         speed.Normalize();
 
@@ -156,6 +162,8 @@ public class CharacterScript : MonoBehaviour
             other.transform.tag = "ennemyDown";
             //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
             Camera.main.GetComponent<ShakeCamera>().DoShake(0.05f);
+            teabag1.Play();
+            teabag2.Play();
             GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
         }
 
