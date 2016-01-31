@@ -28,6 +28,7 @@ public class DestroyScript : MonoBehaviour
         {
             Destroy(collisionInfo.gameObject);
             source.Play();
+            GetComponentInChildren<ParticleSystem>().Play();
             GetComponent<MeshRenderer>().enabled = false;
             gameObject.layer = LayerMask.NameToLayer("Destructed");
             if( Corpse != null)
