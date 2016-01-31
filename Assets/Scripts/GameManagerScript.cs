@@ -73,6 +73,9 @@ public class GameManagerScript : MonoBehaviour
                 //SceneManager.LoadScene( (int.Parse(SceneManager.GetActiveScene().name)+1).ToString());
             }
         }
+
+        findText("Number").text = ennemiesLeft.ToString();
+
     }
 
     private Text findText(string text)
