@@ -31,6 +31,7 @@ public class DestroyScript : MonoBehaviour
             GetComponentInChildren<ParticleSystem>().Play();
             GetComponent<MeshRenderer>().enabled = false;
             gameObject.layer = LayerMask.NameToLayer("Destructed");
+            GameObject.Find("GameManager").GetComponent<GameManagerScript>().SetStarted(true);
             if( Corpse != null)
             {
                 Corpse.GetComponent<Rigidbody>().AddForce(0, 1, 0);

@@ -108,4 +108,9 @@ public class GameManagerScript : MonoBehaviour
             started = true;
         ennemiesLeft--;
     }
+
+    public void SetStarted( bool st )
+    {
+        started = st;
+    }
 }
