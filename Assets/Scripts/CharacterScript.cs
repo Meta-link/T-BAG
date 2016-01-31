@@ -66,12 +66,12 @@ public class CharacterScript : MonoBehaviour
             if (Input.GetAxis("Fire1") != 0 && !firing)
             {
                 firing = true;
+                GetComponentInChildren<ParticleSystem>().Play();
             }
         }
 
         if (firing)
         {
-            GetComponentInChildren<ParticleSystem>().Play();
             shootMult = shootMultiplicator;
             Shoot();
         }
@@ -182,6 +182,7 @@ public class CharacterScript : MonoBehaviour
             shootCount = 0;
             timer = 1;
             animator.SetBool("Shooting", false);
+            GetComponentInChildren<ParticleSystem>().Stop();
         }
     }
 
