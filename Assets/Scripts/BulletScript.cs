@@ -43,7 +43,8 @@ public class BulletScript : MonoBehaviour
         if (collisionInfo.transform.tag != "Player")
         {
             GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<TrailRenderer>().enabled = false;
         }
     }
 
