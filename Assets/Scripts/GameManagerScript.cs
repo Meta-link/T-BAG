@@ -89,7 +89,7 @@ public class GameManagerScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.N))
             {
-                //SceneManager.LoadScene( (int.Parse(SceneManager.GetActiveScene().name)+1).ToString());
+                SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex +1);
             }
         }
 
