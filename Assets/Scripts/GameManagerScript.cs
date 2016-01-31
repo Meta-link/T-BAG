@@ -16,6 +16,10 @@ public class GameManagerScript : MonoBehaviour
     private float timeLeft;
     private Text text;
 
+    private GameObject MVP;
+    private GameObject victory;
+    private GameObject tryAgain;
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +28,13 @@ public class GameManagerScript : MonoBehaviour
         text.text = timeLeft.ToString();
 
         ennemiesLeft = GameObject.FindGameObjectsWithTag("ennemy").Length;
+
+        MVP = GameObject.Find("Reward_MVP");
+        victory = GameObject.Find("Reward_Victory");
+        tryAgain = GameObject.Find("tryAgain");
+        MVP.SetActive(false);
+        victory.SetActive(false);
+        tryAgain.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,17 +56,17 @@ public class GameManagerScript : MonoBehaviour
                 if (ennemiesLeft <= 0)
                     findText("Next").color = Color.black;
 
-                if( timeLeft > authorTime)
+                if(timeLeft > authorTime)
                 {
-                    // Affichage Win MVP
+                    MVP.SetActive(true);
                 }
                 else if( timeLeft > 0)
                 {
-                    // Affichage Win
+                    victory.SetActive(true);
                 }
                 else
                 {
-                    // affichage Fail
+                    tryAgain.SetActive(true);
                     timeLeft = 0;
                 }
             }
