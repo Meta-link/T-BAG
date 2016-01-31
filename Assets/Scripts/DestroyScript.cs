@@ -32,7 +32,6 @@ public class DestroyScript : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Destructed");
             if( Corpse != null)
             {
-                print("tralalal");
                 Corpse.GetComponent<Rigidbody>().AddForce(0, 1, 0);
             }
             //GetComponent<BoxCollider>().enabled = false;
