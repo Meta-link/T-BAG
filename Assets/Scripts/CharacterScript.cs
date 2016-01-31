@@ -165,6 +165,7 @@ public class CharacterScript : MonoBehaviour
             teabag1.Play();
             teabag2.Play();
             GameObject.Find("GameManager").GetComponent<GameManagerScript>().removeEnnemy();
+            GetComponents<AudioSource>()[1].Play();
         }
 
     }

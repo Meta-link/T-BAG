@@ -20,6 +20,7 @@ public class LiveTerrorist : MonoBehaviour {
             GetComponentInChildren<Animator>().SetTrigger("Killed");
             GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterScript>().firstLevel = false;
             gameObject.layer = LayerMask.NameToLayer("OTG");
+            GetComponent<AudioSource>().Play();
             GameObject.Find("TextTuto2").GetComponent<TextMesh>().characterSize = 0.30f;
         }
     }
