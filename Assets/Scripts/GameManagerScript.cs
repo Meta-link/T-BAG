@@ -22,6 +22,8 @@ public class GameManagerScript : MonoBehaviour
     private GameObject victory;
     private GameObject tryAgain;
 
+    public TextMesh[] texttutos;
+
 
 
     // Use this for initialization
@@ -55,6 +57,10 @@ public class GameManagerScript : MonoBehaviour
             //Next niveau
             if (ennemiesLeft <= 0 || timeLeft <= 0)
             {
+                foreach (TextMesh t in texttutos)
+                {
+                    t.characterSize = 0;
+                }
                 isFinish = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterScript>().setActive(false);
                 findText("Restart").color = Color.black; //Methode pirate
@@ -115,7 +121,14 @@ public class GameManagerScript : MonoBehaviour
     public void removeEnnemy()
     {
         if (!started)
-            SetStarted(true);
+        {
+            started = true;
+
+            if(SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                GameObject.Find("TextTuto2").GetComponent<TextMesh>().text = "Humiliate them all before it ends !";
+            }
+        }
         ennemiesLeft--;
 
         if(Random.Range(0,3) == 0)
