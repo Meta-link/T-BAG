@@ -160,7 +160,7 @@ public class CharacterScript : MonoBehaviour
         {
             Debug.Log("TEABAGGED");
             other.transform.tag = "ennemyDown";
-            //other.transform.parent.GetComponent<Renderer>().material = Resources.Load<Material>("BasicBlue.mat");
+            other.transform.parent.FindChild("panneau").gameObject.SetActive(true);
             Camera.main.GetComponent<ShakeCamera>().DoShake(0.05f);
             teabag1.Play();
             teabag2.Play();
