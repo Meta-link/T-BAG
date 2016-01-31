@@ -39,6 +39,9 @@ public class GameManagerScript : MonoBehaviour
         MVP.SetActive(false);
         victory.SetActive(false);
         tryAgain.SetActive(false);
+
+        if(SceneManager.GetActiveScene().buildIndex != 1)
+            GetComponents<AudioSource>()[1].Play();
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class GameManagerScript : MonoBehaviour
         }
         else //ENDSTATE
         {
+            GetComponents<AudioSource>()[2].Pause();
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -109,7 +113,7 @@ public class GameManagerScript : MonoBehaviour
     public void removeEnnemy()
     {
         if (!started)
-            started = true;
+            SetStarted(true);
         ennemiesLeft--;
 
         if(Random.Range(0,3) == 0)
