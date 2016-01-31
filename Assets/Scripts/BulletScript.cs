@@ -19,7 +19,7 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         lifetime += Time.deltaTime;
-        if( lifetime >= 15)
+        if( lifetime >= 5)
         {
             Destroy(this.gameObject);
         }
