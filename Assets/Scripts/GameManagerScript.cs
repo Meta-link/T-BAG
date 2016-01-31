@@ -83,6 +83,7 @@ public class GameManagerScript : MonoBehaviour
         else //ENDSTATE
         {
             GetComponents<AudioSource>()[2].Pause();
+            GameObject.Find("Canvas").SetActive(false);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
