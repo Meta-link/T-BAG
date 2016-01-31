@@ -190,7 +190,7 @@ public class CharacterScript : MonoBehaviour
             shootCount = 0;
             timer = 1;
             animator.SetBool("Shooting", false);
-            GetComponentInChildren<ParticleSystem>().Stop();
+            shoot.Stop();
         }
     }
 
