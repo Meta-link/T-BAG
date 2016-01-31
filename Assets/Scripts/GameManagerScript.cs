@@ -9,6 +9,8 @@ public class GameManagerScript : MonoBehaviour
     public float time;
     public float authorTime;
 
+    public AudioClip[] Voices;
+
     private bool isFinish = false;
     private bool started = false;
     private int ennemiesLeft = 0;
@@ -19,6 +21,8 @@ public class GameManagerScript : MonoBehaviour
     private GameObject MVP;
     private GameObject victory;
     private GameObject tryAgain;
+
+
 
     // Use this for initialization
     void Start()
@@ -81,7 +85,7 @@ public class GameManagerScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.N))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //SceneManager.LoadScene( (int.Parse(SceneManager.GetActiveScene().name)+1).ToString());
             }
         }
 
@@ -107,6 +111,12 @@ public class GameManagerScript : MonoBehaviour
         if (!started)
             started = true;
         ennemiesLeft--;
+
+        if(Random.Range(0,3) == 0)
+        {
+            GetComponent<AudioSource>().clip = Voices[Random.Range(0, Voices.GetLength(0))];
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     public void SetStarted( bool st )
