@@ -71,6 +71,7 @@ public class CharacterScript : MonoBehaviour
 
         if (firing)
         {
+            GetComponentInChildren<ParticleSystem>().Play();
             shootMult = shootMultiplicator;
             Shoot();
         }

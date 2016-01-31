@@ -8,6 +8,8 @@ public class ShakeCamera : MonoBehaviour {
 	private Vector3 OriginalPos;
 	private Quaternion OriginalRot;
 	public float Intensity = 0.05f;
+
+    RaycastHit[] oldHits;
 	
 	void Start()
 	{
@@ -20,7 +22,33 @@ public class ShakeCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if(ShakeIntensity > 0)
+        //RaycastHit[] hits;
+        //hits = Physics.RaycastAll(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position - transform.position, 100.0f/*Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)*/);
+
+        //for (int i = 0; i < hits.Length; i++)
+        //{
+        //    RaycastHit hit = hits[i];
+        //    Renderer rend = hit.transform.GetComponent<Renderer>();
+
+
+        //    if (rend)
+        //    {
+               
+        //        //Color oldtempColor = oldrend.material.color;
+        //        //oldtempColor.a = 1.0F;
+        //        //oldrend.material.color = oldtempColor;
+
+        //        // Change the material of all hit colliders
+        //        // to use a transparent shader.
+        //        //rend.material.shader = Shader.Find("Transparent/Diffuse");
+        //        Color tempColor = rend.material.color;
+        //        tempColor.a = 0.3F;
+        //        rend.material.color = tempColor;
+        //        oldrend = rend;
+        //    }
+        //}
+
+        if (ShakeIntensity > 0)
 		{
 
 			transform.rotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity)*.2f,
