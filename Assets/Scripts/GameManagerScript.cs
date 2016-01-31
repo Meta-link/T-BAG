@@ -83,7 +83,8 @@ public class GameManagerScript : MonoBehaviour
         else //ENDSTATE
         {
             GetComponents<AudioSource>()[2].Pause();
-            GameObject.Find("Canvas").SetActive(false);
+            GameObject.Find("Talibans").GetComponent<RectTransform>().localPosition = new Vector3(5000, 5000);
+            GameObject.Find("Timer").GetComponent<RectTransform>().localPosition = new Vector3(5000, 5000);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
